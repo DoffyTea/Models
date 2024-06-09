@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WebApplication2.Data.User>
+@using WebApplication2.Data;
+@{
+    ViewData["Title"] = "Main Page";
+}
+
+<h1>Main Page</h1>
+
+@if (WebApplication2.Data.ApplicationContext.authorizedUser != null)
+{
+    <p>Welcome, @WebApplication2.Data.ApplicationContext.authorizedUser.Login!</p>
+    <a href="/Animal">View and Add Animals</a>
+}
+else
+{
+    <p>Please log in to add animals.</p>
+}

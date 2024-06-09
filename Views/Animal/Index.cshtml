@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebApplication2.Data.Animal>
+@using WebApplication2.Data;
+
+@{
+    ViewData["Title"] = "Animals";
+}
+
+<h1>Animals</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th></th> <!-- Добавляем пустую ячейку для кнопок действий -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td>@animal.Name</td>
+                <td>@animal.Type</td>
+                <td>@animal.Description</td>
+                <td>
+                    @if (ApplicationContext.authorizedUser != null && ApplicationContext.authorizedUser.IsAdmin)
+                    {
+                        <a href="@Url.Action("Edit", "Animal", new { id = animal.Id })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", "Animal", new { id = animal.Id })" class="btn btn-danger">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <a asp-action="Create" asp-controller="Animal" class="btn btn-primary">Add Animal</a>
+

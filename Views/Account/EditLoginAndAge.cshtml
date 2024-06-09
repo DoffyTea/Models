@@ -1,0 +1,27 @@
+﻿@model WebApplication2.Data.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+<div class="container d-flex flex-row">
+<div class="sidebar col-6">
+    <ul>
+        <li><a href="/Account/EditEmail">Отредактировать почту</a></li>
+        <li><a href="/Account/EditLoginAndAge">Отредактировать логин и возраст</a></li>
+        <li><a href="/Account/EditPassword">Отредактировать пароль</a></li>
+    </ul>
+</div>
+
+<form method="post" asp-controller="Account" asp-action="EditLoginAndAge">
+    <label asp-for="Login"></label>
+        <input asp-for="Login" type="text" value="@WebApplication2.Data.ApplicationContext.authorizedUser.Login" />
+    <span asp-validation-for="Login"></span>
+
+    <label asp-for="Age"></label>
+        <input asp-for="Age" type="number" value="@WebApplication2.Data.ApplicationContext.authorizedUser.Age" />
+    <span asp-validation-for="Age"></span>
+
+    <input type="submit" value="Изменить" />
+
+</form>
+</div>

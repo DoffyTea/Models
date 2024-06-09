@@ -1,0 +1,27 @@
+﻿@model Model
+@{
+    ViewData["Title"] = "Ragistration";
+}
+
+<form method="post" asp-controller="Registration" asp-action="Check">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" type = "email" placeholder="your email"/>
+    <span asp-validation-for="Email"></span>
+
+    <label asp-for="Login"></label>
+    <input asp-for="Login" type="text" placeholder="name or login" />
+    <span asp-validation-for="Login"></span>
+
+    <label asp-for="Age"></label>
+    <input asp-for="Age" type="number" placeholder="age" />
+    <span asp-validation-for="Age"></span>
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" type="password" placeholder="password" />
+    <span asp-validation-for="Password"></span>
+
+    <input asp-for = "CheckedPassword" type = "password" placeholder="check password" />
+    <span asp-validation-for="CheckedPassword"></span>
+    <input type="submit" value="Зарегистрироваться" />
+
+</form>
